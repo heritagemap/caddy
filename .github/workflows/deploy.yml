@@ -72,5 +72,6 @@ jobs:
           echo "$GITHUB_TOKEN" | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
 
           docker pull $IMAGE:latest
-          docker stop caddy || true && docker rm caddy || true
-          docker run -d --name caddy -p 80:80 -p 443:443 -v caddy_data:/data -v caddy_config:/config --network bridge $IMAGE:latest
+          docker stop caddy || true
+          docker rm caddy || true
+          docker run -d --name caddy -p 80:80 -p 443:443 -v caddy_data:/data -v caddy_config:/config --network heritagemap $IMAGE:latest
