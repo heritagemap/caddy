@@ -73,4 +73,4 @@ jobs:
 
           docker pull $IMAGE:latest
           docker stop caddy || true && docker rm caddy || true
-          docker run -d --name caddy -p 80:80 -p 443:443 -v caddy_data:/data -v caddy_config:/config $IMAGE:latest
+          docker run -d --name caddy -p 80:80 -p 443:443 -v caddy_data:/data -v caddy_config:/config --network bridge $IMAGE:latest
